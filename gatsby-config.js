@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `spelld.it`,
+    title: `spelld`,
     description: `The worlds best spelling test app!`,
     author: `@ramseytisher`,
   },
@@ -25,15 +25,15 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Droid Sans', 'Droid Serif']
+          families: ['Droid Sans', 'Droid Serif', 'Arimo', 'Grandstander']
         }
       }
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `spelld.it`,
-        short_name: `spelld.it`,
+        name: `spelld`,
+        short_name: `spelld`,
         start_url: `/`,
         background_color: `#1d6cd2`,
         theme_color: `#1d6cd2`,

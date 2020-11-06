@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
-// import { Link } from "gatsby"
+
+import styled from "styled-components"
 
 import {
   Box,
@@ -18,6 +19,19 @@ import { Play, Close, Restroom } from "grommet-icons"
 import Layout from "../components/layout"
 // import Image from "../components/image"
 import SEO from "../components/seo"
+
+const StyledInput = styled(TextInput)`
+  background: #ffffff;
+  color: #1d6cd2;
+  font-family: "Droid Sans";
+  font-size: 1.75rem;
+  font-weight: 200;
+  border: none;
+
+  ::placeholder {
+    color: #000000;
+  }
+`
 
 const IndexPage = () => {
   const initialWords = [
@@ -74,7 +88,7 @@ const IndexPage = () => {
     let score = 0
     test.forEach(item => {
       if (item.entered) {
-        if (item.entered === item.answer) {
+        if (item.entered.toUpperCase() === item.answer.toUpperCase()) {
           score++
         }
       }
@@ -109,6 +123,12 @@ const IndexPage = () => {
     setDone(false)
   }
 
+  function handleDelete(word) {
+    setWords([...words].filter(w => {
+      return w !== word
+    }))
+  }
+
   return (
     <Layout>
       <SEO title="Home" />
@@ -117,7 +137,7 @@ const IndexPage = () => {
           label={playing ? "Stop Test" : "Start Test"}
           onClick={() => setPlaying(!playing)}
         />
-        <Button label="Reset" onClick={handleReset} />
+        {playing && <Button label="Reset" onClick={handleReset} />}
       </Box>
       {playing ? (
         <Box elevation="medium" pad="medium" margin="medium" gap="small">
@@ -145,13 +165,13 @@ const IndexPage = () => {
                         align="center"
                         justify="center"
                         background="#ffc600"
-                        pad="small"
+                        pad="medium"
                         round="xsmall"
                         margin="medium"
                       >
                         <Restroom size="large" color="dark-1" />
                         <Text size="large" color="dark-1">
-                          You may as well just flush this one down the toilet
+                          Our advise would be to flush this one down the toilet.
                         </Text>
                       </Box>
                     )}
@@ -170,23 +190,14 @@ const IndexPage = () => {
                 align="center"
                 justify="center"
               >
-                <Button
-                  label={`Play Word`}
-                  icon={<Play />}
-                  onClick={() => say(item.answer)}
-                  color="accent-1"
-                />
                 <Form
                   value={entered}
                   onChange={nextValue => setEntered(nextValue)}
                   onReset={() => setEntered("")}
                   onSubmit={() => handleUpdate(item.key)}
                 >
-                  <FormField
-                    name="name"
-                    htmlfor="text-input-id"
-                  >
-                    <TextInput
+                  <FormField name="name" htmlfor="text-input-id">
+                    <StyledInput
                       id="text-input-id"
                       name="studentAnswer"
                       placeholder="Enter answer here"
@@ -197,7 +208,13 @@ const IndexPage = () => {
                       spellcheck="false"
                     />
                   </FormField>
-                  <Box direction="row" gap="medium">
+                  <Box direction="row" gap="medium" justify="center">
+                    <Button
+                      label="Play"
+                      icon={<Play />}
+                      onClick={() => say(item.answer)}
+                      color="accent-1"
+                    />
                     <Button type="submit" primary label="Submit" />
                   </Box>
                 </Form>
@@ -244,7 +261,7 @@ const IndexPage = () => {
           </Box>
         </Box>
       ) : (
-        <Box elevation="small" pad="medium" margin="medium">
+        <Box elevation="small" pad="medium" margin="medium" align="center">
           <Form
             value={word}
             onChange={nextValue => setWord(nextValue.word)}
@@ -263,11 +280,20 @@ const IndexPage = () => {
               />
             </FormField>
             <Box direction="row" gap="medium">
-              <Button type="submit" primary label="Add" />
-              <Button type="reset" label="Reset" />
+              <Button type="submit" primary label="Add Word" />
             </Box>
           </Form>
-          <List data={words} />
+          <Box width="medium" pad="xsmall">
+            {words.map(word => (
+              <Box direction="row" justify="between" align="center">
+                <Text margin="none">{word}</Text>
+                <Box direction="row">
+                  <Button icon={<Play />} onClick={() => say(word)} />
+                  <Button icon={<Restroom />} onClick={() => handleDelete(word)} />
+                </Box>
+              </Box>
+            ))}
+          </Box>
         </Box>
       )}
     </Layout>

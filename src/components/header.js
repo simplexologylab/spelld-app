@@ -5,8 +5,9 @@ import styled from "styled-components"
 
 import Image from "../components/image"
 
-const ColoredHeading = styled(Heading)`
+const StyledHeading = styled(Heading)`
   color: #1d6cd2;
+  font-family: 'Grandstander';
 `
 
 const Header = ({ siteTitle }) => {
@@ -23,9 +24,9 @@ const Header = ({ siteTitle }) => {
           <Heading level={4} margin="none">
             Welcome to
           </Heading>
-          <ColoredHeading margin={{ horizontal: "xsmall", vertical: "none" }}>
+          <StyledHeading margin={{ horizontal: "xsmall", vertical: "none" }}>
             {siteTitle}
-          </ColoredHeading>
+          </StyledHeading>
         </Box>
         <Box width="50px" animation="fadeIn" elevation="large">
           <Image />
