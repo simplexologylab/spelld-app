@@ -8,7 +8,6 @@ import {
   Button,
   FormField,
   TextInput,
-  List,
   Heading,
   Text,
   Meter,
@@ -35,16 +34,16 @@ const StyledInput = styled(TextInput)`
 
 const IndexPage = () => {
   const initialWords = [
-    "entertaining",
-    "promote",
-    "focus",
-    "advertise",
-    "jolts",
-    "critics",
-    "target",
-    "thrilling",
-    "angles",
-    "generated",
+    "fault",
+    "borrow",
+    "reference",
+    "fainted",
+    "genuine",
+    "local",
+    "apologize",
+    "proof",
+    "slimy",
+    "insisted",
   ]
 
   const [playing, setPlaying] = useState(false)
