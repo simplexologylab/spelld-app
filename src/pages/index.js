@@ -87,7 +87,7 @@ const IndexPage = () => {
     let score = 0
     test.forEach(item => {
       if (item.entered) {
-        if (item.entered.toUpperCase() === item.answer.toUpperCase()) {
+        if (item.entered.trim().toUpperCase() === item.answer.toUpperCase()) {
           score++
         }
       }
