@@ -34,17 +34,16 @@ const StyledInput = styled(TextInput)`
 
 const IndexPage = () => {
   const initialWords = [
-    "trembles",
-    "wreckage",
-    "slab",
-    "possessions",
-    "tenement",
-    "crushing",
-    "rubble",
-    "debris",
-    "timbers",
-    "constructed",
-    "Colton farted",
+    "escorted",
+    "swelled",
+    "relied",
+    "reputation",
+    "worthy",
+    "churning",
+    "situation",
+    "deserve",
+    "defended",
+    "satisfied",
   ]
 
   const [playing, setPlaying] = useState(false)
