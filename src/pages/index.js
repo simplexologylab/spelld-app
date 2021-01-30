@@ -209,7 +209,7 @@ const IndexPage = () => {
                   </FormField>
                   <Box direction="row" gap="medium" justify="center">
                     <Button
-                      label="Play"
+                      label="Play Word"
                       icon={<Play />}
                       onClick={() => say(item.answer)}
                       color="accent-1"
