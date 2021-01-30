@@ -7,7 +7,7 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link} from "gatsby"
 
 import { Grommet, Text, Box } from "grommet"
 
@@ -39,6 +39,7 @@ const Layout = ({ children }) => {
         <footer>
           <Box align="center">
             <Text>💡 Designed by Colton</Text>
+            <Link to="/about">About</Link>
           </Box>
         </footer>
       </div>
